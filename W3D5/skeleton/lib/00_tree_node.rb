@@ -17,4 +17,19 @@ class PolyTreeNode
     return true
   end
 
+  def add_child(child_node)
+    children << child_node
+    child_node.parent = self 
+  end
+
+  def remove_child(child_node)
+    raise "Any comment you want" unless children.include?(child_node)
+    children.delete(child_node)
+    child_node.parent = nil 
+
+  end
+
+  def bfs(search_value)
+    
+  end
 end
