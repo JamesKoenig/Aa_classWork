@@ -3,7 +3,10 @@ require_relative "00_tree_node"
 class KnightPathFinder
 
     def self.valid_moves(pos)
-        
+        base_move = [2,1]
+        scalars = [1,-1]
+        manipulations = [Proc.new { |move| move}, Proc.new { |move| move.reverse } ]
+        all_potential_moves 
     end
 
     def initialize(pos)
