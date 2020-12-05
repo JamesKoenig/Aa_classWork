@@ -3,10 +3,20 @@ require_relative "00_tree_node"
 class KnightPathFinder
 
     def self.valid_moves(pos)
-        base_move = [2,1]
-        scalars = [1,-1]
-        manipulations = [Proc.new { |move| move}, Proc.new { |move| move.reverse } ]
-        all_potential_moves 
+        pos_x, pos_y = pos
+        base_moves   = [ [ 2, 1], [ 1, 2],
+                         [-2, 1], [ 1,-2],
+                         [ 2,-1], [-1, 2],
+                         [-2,-1], [-1,-2] ]
+
+        all_potential_moves = base_moves.map do |base_x,base_y|
+                                [base_x+pos_x,base_y+pos_y]
+                              end
+
+        # reject any where either coordinate is greater than 7 or less than 0
+        all_potential_moves.reject do |move|
+          move.any? { |xy| xy < 0 || xy > 7 }
+        end
     end
 
     def initialize(pos)
