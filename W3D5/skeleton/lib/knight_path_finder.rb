@@ -33,12 +33,19 @@ class KnightPathFinder
     end
 
     def build_move_tree(node)
-        new_moves = new_move_positions(node.value)
-        new_moves.each do |move|
-            child = PolyTreeNode.new(move)
-            node.add_child(child)
+        queue = [node]
+
+        until queue.empty?
+            current_node = queue.shift
+            build_node_moves(current_node)
+            queue += current_node.children
         end
-        node.children.each { |child| build_move_tree(child) }
+    end
+
+    def build_node_moves(node)
+        new_move_positions(node.value).each do |move|
+            node.add_child(PolyTreeNode.new(move))
+        end
     end
 
     def find_path(end_pos)
@@ -61,8 +68,7 @@ end
 if __FILE__ == $PROGRAM_NAME
     # 0,0 is top left of board
     kpf = KnightPathFinder.new([0,0])
-    # p kpf
-    # p KnightPathFinder.valid_moves([0,0])  #=> [ [2,1], [1,2] ]
+    p kpf.find_path([2, 4]) # => [[0, 0], [1, 2], [2, 4]]
     p kpf.find_path([7, 6]) # => [[0, 0], [1, 2], [2, 4], [3, 6], [5, 5], [7, 6]]
     p kpf.find_path([6, 2]) # => [[0, 0], [1, 2], [2, 0], [4, 1], [6, 2]]
 end
