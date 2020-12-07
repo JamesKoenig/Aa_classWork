@@ -10,12 +10,12 @@ class TicTacToeNode
 
   def losing_node?(evaluator)
     lose_prc = Proc.new { |child| child.losing_node?(evaluator) }
-    if @board.over? && @board.winner == TicTacToeNode.other_mover(evaluator)
-      return true
+    if @board.over?
+      return @board.winner == TicTacToeNode.other_mover(evaluator)
     elsif evaluator == @next_mover_mark
       children.all?(&lose_prc)
     else
-      children.any?(&lose_prc) 
+      children.any?(&lose_prc)
     end 
   end
 
@@ -30,8 +30,8 @@ class TicTacToeNode
 
   def winning_node?(evaluator)
     win_prc = ->(child) { child.winning_node?(evaluator) }
-    if board.over? && @board.winner == evaluator
-      return true 
+    if board.over?
+      return @board.winner == evaluator
     elsif evaluator == @next_mover_mark
       children.any?(&win_prc)
     else
