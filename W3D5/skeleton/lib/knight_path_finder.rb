@@ -41,12 +41,29 @@ class KnightPathFinder
         end
     end
 
+    def find_path(end_pos)
+        end_node = @root_node.bfs(end_pos)
+        return trace_path_back(end_node)
+    end
+
+    def trace_path_back(node)
+        current = node 
+        result = [node.value]
+        while current != @root_node
+            current = current.parent
+            result.unshift(current.value)
+        end
+        result
+    end
+
 end
 
 if __FILE__ == $PROGRAM_NAME
     # 0,0 is top left of board
     kpf = KnightPathFinder.new([0,0])
-    p kpf
-    p KnightPathFinder.valid_moves([0,0])  #=> [ [2,1], [1,2] ]
+    # p kpf
+    # p KnightPathFinder.valid_moves([0,0])  #=> [ [2,1], [1,2] ]
+    p kpf.find_path([7, 6]) # => [[0, 0], [1, 2], [2, 4], [3, 6], [5, 5], [7, 6]]
+    p kpf.find_path([6, 2]) # => [[0, 0], [1, 2], [2, 0], [4, 1], [6, 2]]
 end
 
