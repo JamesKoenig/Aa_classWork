@@ -47,7 +47,7 @@ class KnightPathFinder
     end
 
     def trace_path_back(node)
-        current = node 
+        current = node
         result = [node.value]
         while current != @root_node
             current = current.parent
