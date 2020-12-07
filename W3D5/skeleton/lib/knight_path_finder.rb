@@ -35,10 +35,10 @@ class KnightPathFinder
     def build_move_tree(node)
         new_moves = new_move_positions(node.value)
         new_moves.each do |move|
-          child = PolyTreeNode.new(move)
-          build_move_tree(child)
-          node.add_child(child)
+            child = PolyTreeNode.new(move)
+            node.add_child(child)
         end
+        node.children.each { |child| build_move_tree(child) }
     end
 
     def find_path(end_pos)
