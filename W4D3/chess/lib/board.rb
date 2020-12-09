@@ -1,13 +1,19 @@
 require_relative 'pieces/nullpiece'
+require_relative 'pieces/piece'
 
 class Board
   def initialize
-    @board = Array.new(8) { Array.new (8) { NullPiece.new() } }
+    @rows = Array.new(8) do |idx|
+      if  idx <= 1 || idx >= 6
+        Array.new(8) { Piece.new() }
+      else 
+        Array.new (8) { NullPiece.new() }
+      end
+
+    end 
   end
 
   def move_piece(start_pos, end_pos)
-    start_pos, end_pos = [pos]
-
     # if there's no piece
     if false # TODO: placeholder
       start_pos = 0
