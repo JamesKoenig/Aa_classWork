@@ -1,6 +1,6 @@
 
 class Piece
-  def empty? 
+  def empty?
     false
   end
 end

@@ -7,18 +7,18 @@ class Board
     @rows = Array.new(8) do |idx|
       if  idx <= 1 || idx >= 6
         Array.new(8) { Piece.new() }
-      else 
+      else
         Array.new (8) { null_piece }
       end
-    end 
+    end
   end
 
   def [](pos)
     row, col = pos
     @rows[row][col]
-  end  
+  end
 
-  def []=(pos,val) 
+  def []=(pos,val)
     row, col = pos
     @rows[row][col] = val
   end
@@ -45,6 +45,6 @@ end
 # tests for board object
 if __FILE__ == $PROGRAM_NAME
   test = Board.new
-  test.move_piece([0,0], [0,5]) 
+  test.move_piece([0,0], [0,5])
   # test.move_piece([5,4], [4,4])
 end
