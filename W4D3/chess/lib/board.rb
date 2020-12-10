@@ -1,5 +1,6 @@
 require_relative 'pieces/nullpiece'
 require_relative 'pieces/piece'
+require_relative 'errors'
 
 class Board
   def initialize
@@ -29,7 +30,7 @@ class Board
 
     # if there's no piece at the starting position
     if self[start_pos].empty? # is_a?(NullPiece)
-      raise "no piece at this position"
+      raise Errors::NoPieceError, "no piece at this position"
     end
 
     # if the piece cannot move to the location
@@ -46,5 +47,11 @@ end
 if __FILE__ == $PROGRAM_NAME
   test = Board.new
   test.move_piece([0,0], [0,5])
-  # test.move_piece([5,4], [4,4])
+  begin
+    test.move_piece([5,4], [4,4])
+  rescue Errors::NoPieceError => error
+    puts "no piece test successful!, got:"
+    p error
+  end
+  puts "yay"
 end
