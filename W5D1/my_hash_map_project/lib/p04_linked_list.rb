@@ -47,7 +47,7 @@ class LinkedList
   end
 
   def get(key)
-    return find(key).val if find(key) != nil
+    return find(key).val if include?(key)
     nil
   end
 
@@ -64,20 +64,11 @@ class LinkedList
   end
 
   def update(key, val)
-    # each do |link|
-    #   if key == link.key
-    #     link.val = val
-    #     return
-    #   end
-    # end
-    find(key).val = val if find(key) != nil #look the lines above
+    find(key).val = val if include?(key)
   end
 
   def remove(key)
-    node = find(key)
-    node.remove if node != nil
-
-    
+    find(key).remove if include?(key)
   end
 
   def each(&block)
@@ -89,11 +80,10 @@ class LinkedList
     self
   end
 
-  
-  # uncomment when you have `each` working and `Enumerable` included
-  # def to_s
-  #   inject([]) { |acc, link| acc << "[#{link.key}, #{link.val}]" }.join(", ")
-  # end
+  #uncomment when you have `each` working and `Enumerable` included
+  def to_s
+    inject([]) { |acc, link| acc << "[#{link.key}, #{link.val}]" }.join(", ")
+  end
   
   private
 
@@ -101,5 +91,4 @@ class LinkedList
     each { |link| return link if key == link.key }
     nil
   end
-
 end
