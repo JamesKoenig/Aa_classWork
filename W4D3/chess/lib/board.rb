@@ -25,9 +25,6 @@ class Board
   end
 
   def move_piece(start_pos, end_pos)
-    start_x, star_y = start_pos
-    end_x,   end_y  = end_pos
-
     # if there's no piece at the starting position
     if self[start_pos].empty? # is_a?(NullPiece)
       raise Errors::NoPieceError, "no piece at this position"
@@ -38,6 +35,8 @@ class Board
       # case one
       raise "can't move to this position"
     end
+
+    # if everything is successful, move the piece from start to end pos
   end
   private
   attr_reader :null_piece
