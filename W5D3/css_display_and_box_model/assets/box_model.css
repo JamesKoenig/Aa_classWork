@@ -1,9 +1,35 @@
-/* Introduction to Cascading Style Sheets */
+  /* Introduction to Cascading Style Sheets */
 
 body {
   /* If the user cannot load the Arial font, the sans-serif font is used */
   font-family: Arial, sans-serif;
   background-color: #FEFFF1;
+  width: 900px;
+  margin: 0 auto;
+}
+
+aside {
+  width: 180px;
+  display: flexbox;
+  margin-right: 15px;
+  float: left;
+}
+
+aside li {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+section {
+  width: 700px;
+  display: flexbox;
+  float: right;
+}
+
+ #directions + ol > li {
+  display: flexblock;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 h1 {
@@ -43,7 +69,12 @@ ol {
   font-weight: bold;
 }
 
+input {
+  display: block;
+}
+
 input[type="radio"] {
+    display: inline-block;
     -webkit-appearance: none;
     width: 27px;
     height: 27px;
@@ -55,6 +86,28 @@ input[type="radio"]:checked {
   background-position: 30px 30px;
 }
 
+@keyframes example {
+  0%   {background-color: red; font-size: 5px}
+  25%  {background-color: yellow;}
+  50%  {background-color: blue; }
+  75%  {background-color: green; font-size: 20px}
+  100% {background-color: red; font-size: 5px}
+}
+
+#reviews label:last-of-type { /* WANT THIS TO BE IN ITS OWN ROW */
+  animation-name: example;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+
+
+label[for="rating"] {
+  display: none;
+}
+
+label[for="expertise"] {
+  display: none;
+}
 
 input:last-child {
     background: gold;
@@ -72,3 +125,15 @@ h2 + .user_review {
     border-top: 1px solid black;
 }
 
+nav li {
+  display: inline-block;
+}
+
+nav {
+  display: inline-flex;
+}
+
+a {
+  display: block;
+  margin: 20px;
+}
