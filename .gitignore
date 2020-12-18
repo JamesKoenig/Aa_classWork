@@ -1,0 +1,12 @@
+
+Gemfile.lock
+
+*.swp
+
+*.zip
+
+*.log
+
+*.db
+
+**/tmp/cache/
