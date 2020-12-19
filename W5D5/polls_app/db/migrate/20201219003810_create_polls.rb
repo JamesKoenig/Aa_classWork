@@ -6,6 +6,6 @@ class CreatePolls < ActiveRecord::Migration[5.2]
       t.timestamps
     end
 
-    add_foreign_key 
+    add_index :polls, :author_id 
   end
 end
