@@ -31,11 +31,15 @@ class CatsController < ApplicationController
   end
 
   def update
-    @cat = Cat.find(params[:id])
-    if @cat.update(cat_params)
-      redirect_to cat_url(@cat)
+    @cat = Cat.find_by(id: params[:id])
+    if Cat.persisted?(@cat)
+      if @cat.update(cat_params)
+        redirect_to cat_url(@cat)
+      else
+        render :edit
+      end
     else
-      render :edit
+      render json: "this cat doesnt exist"
     end
   end
 
