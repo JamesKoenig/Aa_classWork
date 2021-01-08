@@ -6,10 +6,14 @@ html {
 }
 
 body {
-	// ...
+	width:			 80%;
+	margin: 		 0 auto;
+	font-family: $serif;
+	font-size: 	 12px;
 }
 
 button {
+	font-family: $sans-serif;
 	// background-color:
 	// border-color:
 	// color:
@@ -24,8 +28,7 @@ button {
 }
 
 button:hover {
-	// background-color:
-	// border-color:
+	text-decoration: underline;
 }
 
 /*

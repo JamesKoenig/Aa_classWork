@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+f = open('docs/copy/sections_nav.txt')
+f.each_line do |section_title|
+  section = Section.new(title: section_title)
+  section.save!
+end
+f.close
