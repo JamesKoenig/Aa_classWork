@@ -4,10 +4,10 @@
 #
 #  id         :bigint           not null, primary key
 #  subject    :string
-#  body       :text
+#  body       :text             not null
 #  edited     :boolean          default(FALSE)
-#  user_id    :integer
-#  sub_id     :integer
+#  user_id    :integer          not null
+#  sub_id     :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

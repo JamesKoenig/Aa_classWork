@@ -3,7 +3,7 @@
 # Table name: subs
 #
 #  id          :bigint           not null, primary key
-#  name        :string
+#  name        :string           not null
 #  description :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
