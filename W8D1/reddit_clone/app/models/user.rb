@@ -22,6 +22,14 @@ class User < ApplicationRecord
     foreign_key: :user_id,
     class_name: :Post
 
+  has_many :moderated_subs_joins,
+    foreign_key: :moderator_id,
+    class_name:  :Moderator
+
+  has_many :moderated_subs,
+    through: :moderated_subs_joins,
+    source:  :sub
+
   def ensure_session_token
     self.session_token ||= SecureRandom::urlsafe_base64
   end

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resource :session, only: [:new,:create,:destroy]
   # get 'sessions/new'
   resources :users
+  resources :subs
   # get 'users/new'
   # get 'users/create'
   # get 'users/show'
