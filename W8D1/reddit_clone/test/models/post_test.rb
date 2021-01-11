@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: posts
+#
+#  id         :bigint           not null, primary key
+#  subject    :string
+#  body       :text
+#  edited     :boolean          default(FALSE)
+#  user_id    :integer
+#  sub_id     :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 require 'test_helper'
 
 class PostTest < ActiveSupport::TestCase
