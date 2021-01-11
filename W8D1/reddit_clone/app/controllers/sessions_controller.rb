@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  
+  before_action :require_logged_in, only: [:destroy]
+  
   def new
     render :new
   end
@@ -9,7 +12,7 @@ class SessionsController < ApplicationController
                                     params[:user][:password]
                                     )
     if !user.nil?
-      login(user)
+      log_in(user)
       redirect_to user_url(user)
     else
       flash[:error] = ["Get Rekt, scrub."]
@@ -19,6 +22,6 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out
-    redirect_to session_url
+    redirect_to new_session_url
   end
 end

@@ -1,12 +1,16 @@
 class UsersController < ApplicationController
+  
+  before_action :require_logged_in, except: [:new, :create]
+  
   def new
     @user = User.new
     render :new
   end
 
   def create
-    @user = User.find_by_credentials(params[:username], params[:password])
+    @user = User.new(user_params)
     if @user.save
+      log_in(@user)
       redirect_to users_url
     else
       flash[:errors] = @user.errors.full_messages
