@@ -9,6 +9,7 @@
 #  updated_at  :datetime         not null
 #
 class Sub < ApplicationRecord
+  validates :name, presence: true, uniqueness: true
 
   has_many :posts,
     foreign_key: :sub_id,
