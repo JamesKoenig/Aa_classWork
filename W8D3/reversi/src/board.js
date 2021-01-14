@@ -9,6 +9,24 @@ if (typeof window === 'undefined'){
  * and two white pieces at [3, 3] and [4, 4]
  */
 function _makeGrid () {
+  /*
+    #ruby equiv:
+    arr = Array.new(8) { Array.new(8) }
+    # direct ruby equiv:
+    @grid =  Array.new(8).map { Array.new(8) }
+    */
+  /* this.grid = new Array(8).map(function() {
+    new Array(8);
+  }); */
+  let grid = new Array();
+  for(i=0; i < 8; i++) {
+    grid.push(new Array(8));
+  }
+  grid[3][3] = new Piece("white");
+  grid[3][4] = new Piece("black");
+  grid[4][3] = new Piece("black");
+  grid[4][4] = new Piece("white");
+  return grid;
 }
 
 /**
