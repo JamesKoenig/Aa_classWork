@@ -1,8 +1,0 @@
-/* PHASE 0: Sidebar */
-.profile-picture {
-  display: block;
-  position: relative;
-  margin-top: -60%;
-  box-shadow: 1px 5px 5px grey;
-  transform: rotate3d(0,-1,1,15deg);
-}
