@@ -13,13 +13,19 @@ class Sub < ApplicationRecord
 
   has_many :posts,
     foreign_key: :sub_id,
-    class_name: :Post
+    class_name:  :Post
 
   has_many :moderator_joins,
     foreign_key: :sub_id,
+    dependent:   :destroy,
     class_name:  :Moderator
-  
+
   has_many :moderators,
     through: :moderator_joins,
     source:  :user
+    
+  def add_moderator(user)
+    mod = Moderator.new(sub_id: self.id, moderator_id: user.id)
+    mod.save
+  end
 end
