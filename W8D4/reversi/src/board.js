@@ -112,9 +112,11 @@ Board.prototype._positionsToFlip = function(pos, color, dir, piecesToFlip=[]){
 
   // this should really just be a chain of ||-sb
   if (!this.isValidPos(next) || 
-      !this.isOccupied(next) || 
-       this.getPiece(next).color === color) {
-         return piecesToFlip;
+      !this.isOccupied(next)) {
+        return [];
+  } 
+  if (this.getPiece(next).color === color) {
+        return piecesToFlip;
   }
 
   return this._positionsToFlip(next,
