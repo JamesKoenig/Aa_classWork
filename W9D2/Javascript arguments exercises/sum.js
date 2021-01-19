@@ -14,3 +14,5 @@ function sumArguments() {
 
 console.log(sum(1,2,3,4));
 console.log(sumArguments(1,2,3,4));
+
+
