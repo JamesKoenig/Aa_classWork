@@ -7,7 +7,7 @@
 // }
 
 Function.prototype.inherits = function(parentClass) {
-    this.prototype = new Object.create(parentClass).prototype;
+    this.prototype = Object.create(parentClass.prototype);
     this.prototype.constructor = this;
 } 
 
