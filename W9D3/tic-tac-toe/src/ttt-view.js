@@ -1,4 +1,5 @@
 const Board = require('./board.js');
+const MoveError = require("./moveError.js")
 
 class View {
   constructor(game, $el) {
@@ -10,25 +11,43 @@ class View {
 
   bindEvents() {
     $(".board li").click((e) => {
-      // debugger
-      let $box       = $(e.currentTarget);
-      let posInts = $box.data("pos").split(",").map(s => parseInt(s));
-      if(this.game.board.isEmptyPos(posInts)) {
-        let $h2 = $('<h2></h2>');
+      try {
+        let $h2;
+        let currentPlayer = this.game.currentPlayer;
+        let $box       = $(e.currentTarget);
+        let posInts = $box.data("pos").split(",").map(s => parseInt(s));
+        this.game.playMove(posInts);
+
+        $h2 = $('<h2></h2>');
         $h2.html(this.game.currentPlayer);
         $h2.addClass('playerMark');
         $box.append($h2);
- 
-        if(this.game.currentPlayer === "x") {
-          $(e.target).css('background-color','red');
+      } catch (e) {
+        if (e instanceof MoveError) {
+          alert(e.msg);
         } else {
-          $(e.target).css('background-color','blue');
+          throw e;
         }
-        this.game.playMove(posInts); //e.currentTarget())
-        //debugger;
-      } else {
-        alert('Invalid position');
       }
+      // debugger
+      // let $box       = $(e.currentTarget);
+      // let posInts = $box.data("pos").split(",").map(s => parseInt(s));
+      // if(this.game.board.isEmptyPos(posInts)) {
+        // let $h2 = $('<h2></h2>');
+        // $h2.html(this.game.currentPlayer);
+        // $h2.addClass('playerMark');
+        // $box.append($h2);
+ 
+      //   if(this.game.currentPlayer === "x") {
+      //     $(e.target).css('background-color','red');
+      //   } else {
+      //     $(e.target).css('background-color','blue');
+      //   }
+      //   this.game.playMove(posInts); //e.currentTarget())
+      //   //debugger;
+      // } else {
+      //   alert('Invalid position');
+      // }
     })
   }
 
