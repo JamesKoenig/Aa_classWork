@@ -4,15 +4,25 @@ class View {
     this.board = $el;
   }
 
-  bindEvents() {}
+  bindEvents() {
+    $(".board li").click((e) => {
+      // debugger
+      let posStrings = $(e.currentTarget).data("pos").split(",");
+      alert(posStrings);
+      this.game.playMove(posStrings); //e.currentTarget())
+    })
+  }
 
   makeMove($square) {}
 
   setupBoard() {
     let $ul = $('<ul></ul>');
-    for(let i = 0; i < 9; i++) {
-      let $li = $('<li></li>');
-      $ul.append($li);
+    for(let i = 0; i < 3; i++) {
+      for(let j = 0; j < 3; j++) {
+        let $li = $('<li></li>');
+        $li.data("pos", `${i},${j}`)
+        $ul.append($li);
+      }
     }
     $ul.addClass('board');
     this.board.append($ul);

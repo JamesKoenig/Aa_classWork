@@ -7,4 +7,5 @@ const Game = require('./game.js');
     const view    = new View(game,container);
 
     view.setupBoard();
+    view.bindEvents();
   });
