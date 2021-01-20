@@ -1,15 +1,34 @@
+const Board = require('./board.js');
+
 class View {
   constructor(game, $el) {
     this.game  = game;
     this.board = $el;
+    this.setupBoard();
+    this.bindEvents();
   }
 
   bindEvents() {
     $(".board li").click((e) => {
       // debugger
-      let posStrings = $(e.currentTarget).data("pos").split(",");
-      alert(posStrings);
-      this.game.playMove(posStrings); //e.currentTarget())
+      let $box       = $(e.currentTarget);
+      let posInts = $box.data("pos").split(",").map(s => parseInt(s));
+      if(this.game.board.isEmptyPos(posInts)) {
+        let $h2 = $('<h2></h2>');
+        $h2.html(this.game.currentPlayer);
+        $h2.addClass('playerMark');
+        $box.append($h2);
+ 
+        if(this.game.currentPlayer === "x") {
+          $(e.target).css('background-color','red');
+        } else {
+          $(e.target).css('background-color','blue');
+        }
+        this.game.playMove(posInts); //e.currentTarget())
+        //debugger;
+      } else {
+        alert('Invalid position');
+      }
     })
   }
 
