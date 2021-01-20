@@ -11,4 +11,9 @@ Gemfile.lock
 
 *.sqlite3
 
-**/tmp
+**/tmp/
+
+node_modules/
+
+#ignore any webpack generated javascript
+**/dist/main.js
