@@ -1,4 +1,4 @@
-import htmlGenerator from "./warmup";
+import { htmlGenerator } from "./warmup";
 
 class Clock {
     constructor() {
@@ -23,7 +23,6 @@ class Clock {
 
       // Use console.log to print it.
       console.log(timeString);
-      return timeString;
     }
 
     _tick() {
@@ -60,7 +59,8 @@ class Clock {
 const clockDiv = document.getElementById('clock');
 
 Clock.prototype.printTime = function() {
-    htmlGenerator(`The Current Time: ${this.printTime()}`, clockDiv);
+    const timeString = [this.hours, this.minutes, this.seconds].join(":");
+    htmlGenerator(`The Current Time: ${timeString}`, clockDiv);
 }
 
 const clock = new Clock();
