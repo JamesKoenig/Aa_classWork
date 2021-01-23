@@ -56,4 +56,12 @@ class Clock {
     }
   }
   
- export const clock = new Clock();
+
+const clockDiv = document.getElementById('clock');
+
+Clock.prototype.printTime = function() {
+    htmlGenerator(`The Current Time: ${this.printTime()}`, clockDiv);
+}
+
+
+const clock = new Clock();
