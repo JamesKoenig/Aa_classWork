@@ -1,5 +1,15 @@
+const { DOMNodeCollection } = require("./dom_node_collection");
 
 function $l(arg) {
-  console.log("hello world!");
+  if(typeof arg === "string") {
+    return Array.from(_selector(arg));
+  } else if(arg instanceof HTMLElement) {
+    return new DOMNodeCollection([arg]);
+  }
 }
-window.$l = $l
+
+function _selector(string) {
+  return document.querySelectorAll(string);
+}
+
+window.$l = $l;
