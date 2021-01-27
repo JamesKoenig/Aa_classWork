@@ -1,3 +1,8 @@
-import * as MineSweeper from '../lib/minesweeper'; 
+import Game from "./game"
+import React from "react"
+import ReactDOM from "react-dom"
 
-console.log(MineSweeper);
+document.addEventListener("DOMContentLoaded", () => {
+    const reactRoot = document.getElementById('react-root');
+    ReactDOM.render(<Game />, reactRoot)
+})
