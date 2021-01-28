@@ -6,7 +6,8 @@ export default class Game extends React.Component{
     constructor(props) {
         super(props);
         // initialize new board
-        this.state = { board: new MineSweeper.Board() };
+        let board = new MineSweeper.Board(3, 1);
+        this.state = { board };
         this.updateGame = this.updateGame.bind(this);
     }
 
@@ -19,7 +20,7 @@ export default class Game extends React.Component{
             <Board 
                 board={this.state.board} 
                 updateCB={this.updateGame}
-                test="hello world" />
+                />
         );
     }
 }

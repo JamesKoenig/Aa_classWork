@@ -1,0 +1,10 @@
+.minesweeper-grid {
+    display: flex;
+    flex-direction: column;
+}
+
+.minesweeper-row {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
