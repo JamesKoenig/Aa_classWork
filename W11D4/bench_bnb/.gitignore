@@ -1,0 +1,16 @@
+# don't upload the node_modules directory
+node_modules/
+
+# ignore webpack bundled files
+bundle.js
+bundle.js.map
+
+# no logs or tmpfiles pls
+*.log
+**/tmp/
+
+# no osx dirs pls
+.DS_Store
+
+# in case I don't quit vim right
+*.swp
