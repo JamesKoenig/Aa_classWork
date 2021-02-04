@@ -20,7 +20,7 @@ const logoutCurrentUser = ()    => ({
 
 //thunk middleware curried dispatching functions
 export const createNewUser = formUser => dispatch => 
-  postUser(fromUser).then( user => dispatch(receiveCurrentUser(user)));
+  postUser(formUser).then( user => dispatch(receiveCurrentUser(user)));
 
 export const login = formUser => dispatch => 
   postSession(formUser).then( user => dispatch(receiveCurrentUser(user)));
