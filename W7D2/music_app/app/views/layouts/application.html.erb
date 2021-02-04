@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MusicApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <h1>Music App</h1>
+  <h2>WELCOME TO OUR AMAZING SITE</h2>
+  <% if logged_in? %>
+    <h2>WELCOME TO OUR AWESOME SITE, <%= current_user.email %>!</h2>
+    <form action=<%=session_url %> method="POST"> <!-- can't overwrite get, make sure it's post-->
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %>>
+      <input type="submit" value="LOGOUT">
+    </form>
+  <% else %>
+    <li><a href=<%= new_user_url %>>SIGN UP!</a></li>
+    <li><a href=<%= new_session_url %>>SIGN IN!!</a></li>
+  <% end %>
+
+  <%= yield %>
+  <% if flash[:errors] %> <!-- displaying errors if they exist -->
+    <% flash[:errors].each do |error| %>
+      <%= error %>
+    <% end %>
+  <% end %>
+</body>
+
+</html>
+
+<%# need to come back for the styling, refers to app/assets/stylesheets %>
