@@ -8,7 +8,7 @@ import { Route } from 'react-router-dom';
 
 export default () => (
   <div>
-    <Route path="/" component={NavBarContainer} />
+    <Route path="/"       component={NavBarContainer} />
     <Route exact path="/" component={Home} />
     <Route path="/chirps" component={ChirpIndexContainer} />
     <Route path="/signup" component={SignupContainer} />
