@@ -1,0 +1,22 @@
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
+}
+
+li {
+    width: 90px;
+    height: 90px;
+    border: 3px solid;
+    background: gray;
+}
+
+li:hover {
+    background: yellow;
+}
+
+.complete {
+    background: white;
+}

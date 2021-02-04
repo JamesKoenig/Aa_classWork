@@ -1,0 +1,22 @@
+h1 {
+    font-family: 'Hanalei', cursive;
+   }
+
+.clock_stuff {
+    background-color: orange;
+    font-size: 30px;
+    color: white;
+    width: 500px;
+    height: 150px;
+    padding: 20px;
+    border-width: 3px, 3px;
+    border-color: black;
+
+    
+}
+
+.clock_stuff p {
+    display: flex;
+    justify-content: space-between;
+
+}
