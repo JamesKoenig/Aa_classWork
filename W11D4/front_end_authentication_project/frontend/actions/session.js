@@ -13,9 +13,8 @@ const receiveCurrentUser = user => ({
   user
 });
 
-const logoutCurrentUser = ()    => ({
-  type: LOGOUT_CURRENT_USER,
-  user
+const logoutCurrentUser = () => ({
+  type: LOGOUT_CURRENT_USER
 });
 
 //thunk middleware curried dispatching functions
