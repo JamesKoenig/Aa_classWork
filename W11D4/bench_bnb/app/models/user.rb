@@ -15,12 +15,12 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6, 
                                  allow_null: true }
 
-  before_action :ensure_session_token
+  before_validation :ensure_session_token
 
   attr_accessor :password
 
   def ensure_session_token
-    @session_token ||= SecureRandom.urlsafe_base64
+    self.session_token ||= SecureRandom.urlsafe_base64
   end
 
   def password=(password)
