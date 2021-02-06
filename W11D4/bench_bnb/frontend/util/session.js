@@ -1,5 +1,4 @@
-
-export const signup = (user) => {
+export const postUser = (user) => {
     return $.ajax({
         url: '/api/users',
         method: 'POST',
@@ -7,14 +6,15 @@ export const signup = (user) => {
     });
 };
 
-export const login = () => {
+export const postSession = (user) => {
     return $.ajax({
         url: '/api/session',
-        method: 'POST'
+        method: 'POST',
+        data: { user }
     });
 };
 
-export const logout = () => {
+export const deleteSession = () => {
     return $.ajax({
         url: '/api/session',
         method: 'DELETE'

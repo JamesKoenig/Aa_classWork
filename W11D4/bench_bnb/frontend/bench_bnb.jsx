@@ -1,15 +1,28 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { signup, logout, login } from './util/session_api_util';
+import React       from 'react';
+import ReactDOM    from 'react-dom';
+import Root        from './components/root';
+import createStore from './store/store';
+import * as sessionActions from './actions/session';
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
 
-  ReactDOM.render(
-    <p>oh god how did I get here I am not good with computers</p>,
-    root);
-});
+  let preloadedState = undefined;
+  if(window.currentUser) {
+    preloadedState = {
+      session: {
+        id: window.currentUser.id
+      }
+    };
+  }
+  window.sessionActions = sessionActions;
 
-window.login = login;
-window.logout = logout;
-window.signup = signup;
+  const store = createStore(preloadedState);
+
+  window.getState = store.getState;
+  window.dispatch = store.dispatch;
+
+  ReactDOM.render(<Root store={store} />, root);
+});
